@@ -1,0 +1,24 @@
+Analyse des besoins en données du site du restaurant Leila.
+Liste des entités, et leurs caractéristiques : 
+
+1) Catégorie
+    a) id : obligatoire, nombre entier unique identifiant la catégorie
+    b) nom : obligatoire, chaîne de caractères de longueur variable, maximum: 25
+
+2) Plat
+    a) id : obligatoire, nombre entier unique identifiant le plat
+    b) nom : obligatoire, chaîne de caractères de longueur variable, maximum : 200
+    c) description : optionnel, chaîne de caractères de longueur variable, max: 200
+    d) portion : obligatoire, nombre entier, valeur par défaut : 1
+    e) prix : obligatoire, nombre décimal (2 places après le point décimal)
+    f) date_ajout : optionnel, date d'ajout du plat dans la BD
+    g) id_categorie : obligatoire, nombre entier référant à l'identifiant de la catégorie à laquelle appartient le plat
+
+3) Vin
+    a) id : obligatoire, nombre entier unique identifiant la bouteille de vin
+    b) nom : obligatoire, chaîne de caractères de longueur variable, max 100
+    c) description : optionnel, chaîne de caractères de longueur variable, max 100
+    d) provenance : obligatoire, chaîne de caractères de longueur variable, max 50
+    e) prix : obligatoire, nombre décimal (2 places après le point décimal)
+    f) date_ajout : optionnel, date d'ajout du vin dans la BD
+    g) id_categorie : obligatoire, nombre entier référant à l'identifiant de la catégorie à laquelle appartient le vin
