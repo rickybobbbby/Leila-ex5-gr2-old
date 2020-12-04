@@ -10,16 +10,20 @@
   // Utiliser UTF-8 
   mysqli_query($connexion, "SET NAMES 'UTF8'");
   // Sélectionner la BD "leila"
-  mysqli_select_db($connexion, "leila");
+  mysqli_select_db($connexion, "leila_i18n");
   // Chercher l'information du menu (avec les noms des catégories)
   $requeteMenu = "SELECT 
-                      p.nom AS nomPlat, 
+                      pld.nom AS nomPlat, 
                       description, 
                       portion, 
                       prix, 
-                      c.nom AS nomSection 
+                      cd.nom AS nomSection 
                     FROM plat AS p 
+                      JOIN plat_detail AS pld ON pld.id_plat = p.id
                       JOIN categorie AS c ON p.id_categorie = c.id
+                      JOIN categorie_detail AS cd ON cd.id_categorie = c.id
+                    WHERE cd.code_langue = '$langueActive'
+                    AND pld.code_langue = '$langueActive'
                     ORDER BY c.id ASC,prix ASC";
   $resultatMenu = mysqli_query($connexion, $requeteMenu);
   

@@ -7,7 +7,7 @@
 
   // Intégrer la base de données pour la carte des vins
   $connexion = mysqli_connect("localhost", "root", "");
-  // Utiliser UTF-8 
+  // Utiliser UTF-8
   mysqli_query($connexion, "SET NAMES 'UTF8'");
   // Sélectionner la BD "leila"
   mysqli_select_db($connexion, "leila");
