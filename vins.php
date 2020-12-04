@@ -12,8 +12,11 @@
   // Sélectionner la BD "leila"
   mysqli_select_db($connexion, "leila");
   // Chercher l'information du menu (avec les noms des catégories)
-  if(isset($_GET["origine"])) {
-    $origine = $_GET["origine"];
+  $origine = "";
+  if(isset($_POST["origine"])) {
+    $origine = $_POST["origine"];
+  }
+
     $requeteVins = "SELECT 
                         v.nom AS nomVin, 
                         description, 
@@ -24,18 +27,8 @@
                         JOIN categorie AS c ON v.id_categorie = c.id
                       WHERE provenance LIKE '%$origine%'
                       ORDER BY c.id ASC,prix ASC";
-  }
-  else {
-    $requeteVins = "SELECT 
-                        v.nom AS nomVin, 
-                        description, 
-                        provenance, 
-                        prix, 
-                        c.nom AS nomSection 
-                      FROM vin AS v 
-                        JOIN categorie AS c ON v.id_categorie = c.id
-                      ORDER BY c.id ASC,prix ASC";
-  }
+  
+  
   $resultatVins = mysqli_query($connexion, $requeteVins);
   
   // Réorganiser le jeu d'enregistrements obtenu pour produire un tableau associatif
